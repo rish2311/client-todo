@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../services/api";
-import amxios from "axios"
 import { saveToken } from "../../utils/token";
 
 export default function Register() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  useEffect(() => {
+  
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
