@@ -49,24 +49,25 @@ export default function TodoList() {
           placeholder="New list name"
           className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded px-3 py-2 focus:outline-none flex-1"
         />
-        <button onClick={handleAddList} className="btn-primary ml-2">
+        <button onClick={handleAddList} className="ml-2 px-4 py-2 rounded text-white font-medium" style={{backgroundColor: '#6366F1'}}>
           Add
         </button>
       </div>
       {lists.map((list) => (
-        <div key={list._id} className="border rounded mb-4 p-3">
+        <div key={list._id} className="border-[10px] rounded mb-4 p-3">
           <div className="flex justify-between items-center mb-2">
             <input
-              className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded px-3 py-2 focus:outline-none mb-2 font-semibold"
+              className="bg-blue-100 dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded px-3 py-2 focus:outline-none mb-2 font-semibold"
               value={list.name}
-              onChange={(e) => {
-                const updatedName = e.target.value;
-                setLists(
-                  lists.map((l) =>
-                    l._id === list._id ? { ...l, name: updatedName } : l
-                  )
-                );
-              }}
+              disabled
+              // onChange={(e) => {
+              //   const updatedName = e.target.value;
+              //   setLists(
+              //     lists.map((l) =>
+              //       l._id === list._id ? { ...l, name: updatedName } : l
+              //     )
+              //   );
+              // }}
               onBlur={async () => {
                 await axios.put(
                   `/todos/${list._id}`,

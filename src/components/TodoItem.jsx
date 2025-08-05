@@ -1,7 +1,7 @@
 export default function TodoItem({ item, onUpdate, onDelete }) {
   return (
-    <div className="flex items-center justify-between p-2 border rounded mb-2">
-      <input
+    <div className="flex items-center ml-5 justify-between p-2 border rounded mb-2">
+      <input 
         type="checkbox"
         checked={item.completed}
         onChange={() => onUpdate({ ...item, completed: !item.completed })}
