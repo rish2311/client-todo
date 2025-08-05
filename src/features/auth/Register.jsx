@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from '../../services/api';
 import { saveToken } from '../../utils/token';
 
@@ -47,7 +47,7 @@ export default function Register() {
         />
         <button className="mt-4 w-full px-4 py-2 rounded text-white font-medium" style={{backgroundColor: '#6366F1'}} type="submit">Register</button>
         <p className="text-sm mt-3">
-          Already have an account? <a href="/login" className="text-blue-500">Login</a>
+          Already have an account? <Link href="/login" className="text-blue-500">Login</Link>
         </p>
       </form>
     </div>
