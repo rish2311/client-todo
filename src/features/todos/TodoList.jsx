@@ -7,6 +7,7 @@ import TodoForm from "./TodoForm";
 export default function TodoList() {
   const [lists, setLists] = useState([]);
   const [newList, setNewList] = useState("");
+  const [isAddingList, setIsAddingList] = useState(false);
 
   const fetchTodos = async () => {
     const res = await axios.get("/todos", {
@@ -20,16 +21,21 @@ export default function TodoList() {
   }, []);
 
   const handleAddList = async () => {
-    if (!newList.trim()) return;
-    await axios.post(
-      "/todos",
-      { name: newList },
-      {
-        headers: { Authorization: `Bearer ${getToken()}` },
-      }
-    );
-    setNewList("");
-    fetchTodos();
+    if (!newList.trim() || isAddingList) return;
+    setIsAddingList(true);
+    try {
+      await axios.post(
+        "/todos",
+        { name: newList },
+        {
+          headers: { Authorization: `Bearer ${getToken()}` },
+        }
+      );
+      setNewList("");
+      fetchTodos();
+    } finally {
+      setIsAddingList(false);
+    }
   };
 
   const handleDeleteList = async (id) => {
@@ -49,8 +55,17 @@ export default function TodoList() {
           placeholder="New list name"
           className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded px-3 py-2 focus:outline-none flex-1"
         />
-        <button onClick={handleAddList} className="ml-2 px-4 py-2 rounded text-white font-medium" style={{backgroundColor: '#6366F1'}}>
-          Add
+        <button 
+          onClick={handleAddList}
+          disabled={isAddingList}
+          className="ml-2 px-4 py-2 rounded text-white font-medium flex items-center justify-center" 
+          style={{backgroundColor: isAddingList ? '#9CA3AF' : '#6366F1'}}
+        >
+          {isAddingList ? (
+            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          ) : (
+            'Add'
+          )}
         </button>
       </div>
       {lists.map((list) => (
