@@ -33,7 +33,7 @@ export default function Login() {
           type="email"
           name="email"
           placeholder="Email"
-          className="input"
+          className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded px-3 py-2 focus:outline-none"
           onChange={handleChange}
           required
         />
@@ -41,7 +41,7 @@ export default function Login() {
           type="password"
           name="password"
           placeholder="Password"
-          className="input"
+          className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded px-3 py-2 focus:outline-none"
           onChange={handleChange}
           required
         />

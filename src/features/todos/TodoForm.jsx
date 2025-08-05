@@ -20,7 +20,10 @@ export default function TodoForm({ listId, refresh }) {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Add item"
-        className="input flex-1"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') handleAddItem();
+        }}
+        className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded px-3 py-2 focus:outline-none flex-1"
       />
       <button onClick={handleAddItem} className="btn-primary ml-2">Add</button>
     </div>

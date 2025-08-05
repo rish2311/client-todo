@@ -8,7 +8,7 @@ import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white">
       <Navbar />
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" />} />

@@ -47,7 +47,7 @@ export default function TodoList() {
           value={newList}
           onChange={(e) => setNewList(e.target.value)}
           placeholder="New list name"
-          className="input flex-1"
+          className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded px-3 py-2 focus:outline-none flex-1"
         />
         <button onClick={handleAddList} className="btn-primary ml-2">
           Add
@@ -57,7 +57,7 @@ export default function TodoList() {
         <div key={list._id} className="border rounded mb-4 p-3">
           <div className="flex justify-between items-center mb-2">
             <input
-              className="input mb-2 font-semibold"
+              className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded px-3 py-2 focus:outline-none mb-2 font-semibold"
               value={list.name}
               onChange={(e) => {
                 const updatedName = e.target.value;
